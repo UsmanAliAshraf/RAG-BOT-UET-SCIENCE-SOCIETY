@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langgraph
+faiss-cpu
+groq
+python-dotenv
+tiktoken
+fastapi
+uvicorn
+sentence-transformers
+groq
+GroqChat
