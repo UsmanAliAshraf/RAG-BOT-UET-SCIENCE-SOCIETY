@@ -1,16 +1,19 @@
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.chains import RetrievalQA
+from langchain.chains import ConversationalRetrievalChain
 from langchain.prompts import PromptTemplate
 from langchain_groq.chat_models import ChatGroq
+from langchain.memory import ConversationBufferWindowMemory
 from dotenv import load_dotenv
 import os
 import warnings
+import re
+
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 load_dotenv()
-
 groq_api_key = os.getenv("GROQ_API_KEY")
+
 # ------------------------------
 # 2️⃣ Load embeddings + FAISS index
 # ------------------------------
@@ -28,50 +31,61 @@ retriever = db.as_retriever(
 )
 
 # ------------------------------
-# 4️⃣ Define LLM (Groq) in LangChain
+# 4️⃣ Define LLM (Groq)
 # ------------------------------
-# Make sure you set your Groq API key in env: GROQ_API_KEY
 os.environ["GROQ_API_KEY"] = groq_api_key
-
 llm = ChatGroq(
-    model="qwen/qwen3-32b",   # Groq model suitable for QA / RAG
+    model="qwen/qwen3-32b",
     temperature=0,
     max_tokens=512
 )
 
 # ------------------------------
-# 5️⃣ Create a prompt template
+# 5️⃣ Define prompt
 # ------------------------------
 template = """
 You are a professional assistant for UET Science Society.
-Use the context below to answer the question concisely. If the answer is not present, say "I don't know, Please ask only about science society.".
+Use the context below to answer the question concisely. 
+If the answer is not present, say "I don't know, Please ask only about science society.".
 Do not provide any explanations or additional information.
 
 CONTEXT:
 {context}
+
+CHAT HISTORY:
+{chat_history}
 
 QUESTION:
 {question}
 """
 
 prompt = PromptTemplate(
-    input_variables=["context", "question"],
+    input_variables=["context", "chat_history", "question"],
     template=template
 )
 
 # ------------------------------
-# 6️⃣ Create RetrievalQA chain
+# 6️⃣ Add memory (last 3 turns only)
 # ------------------------------
-qa_chain = RetrievalQA.from_chain_type(
-    llm=llm,
-    chain_type="stuff",        # Stuff means combine all chunks into prompt
-    retriever=retriever,
-    return_source_documents=True,
-    chain_type_kwargs={"prompt": prompt}
+memory = ConversationBufferWindowMemory(
+    k=3,                       # last 3 exchanges
+    memory_key="chat_history", # key name must match prompt input
+    return_messages=True
 )
 
 # ------------------------------
-# Chat CLI loop (clean, no verbose)
+# 7️⃣ Conversational Retrieval Chain (QA + Memory)
+# ------------------------------
+qa_chain = ConversationalRetrievalChain.from_llm(
+    llm=llm,
+    retriever=retriever,
+    memory=memory,
+    combine_docs_chain_kwargs={"prompt": prompt},
+    return_source_documents=False,
+)
+
+# ------------------------------
+# Chat CLI loop
 # ------------------------------
 print("🤖 UET Science Society ChatBot (type 'exit' to quit)\n")
 
@@ -81,13 +95,7 @@ while True:
         print("Goodbye! 👋")
         break
 
-    # Ask the QA chain, disable verbose
-    result = qa_chain.invoke({"query": query})  # use .invoke() instead of .__call__ to avoid warnings
-    raw_answer = result['result']
+    result = qa_chain.invoke({"question": query})
+    raw_answer = result['answer']
 
-    # Remove everything between <think> and </think>
-    import re
-    clean_answer = re.sub(r'<think>.*?</think>', '', raw_answer, flags=re.DOTALL).strip()
-
-    print(f"Bot: {clean_answer}\n")
-
+    print(f"Bot: {raw_answer}\n")
