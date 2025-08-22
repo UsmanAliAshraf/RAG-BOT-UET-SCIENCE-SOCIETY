@@ -16,7 +16,9 @@ Over the past decade, the UET Science Society has established itself as a leadin
 
 
 # EVENTS AT SCEINCE SOCIETY(SS)
-Science society has following eevnts held every year. ASTEM, SYNES , ANNUAL CELEBRATION, PROJECT BREATHE, MAGAZINE LAUNCH, OUTREACH PROGRAMS, PROJECT COMPETITIONS, PSI MEET, AND MANY MORE.
+Science society has following eevnts held every year. STEM, SYNES , ANNUAL CELEBRATION, PROJECT BREATHE, MAGAZINE LAUNCH, OUTREACH PROGRAMS, PROJECT COMPETITIONS, PSI MEET, AND MANY MORE.
+here are the details for each one of them.
+
 ## STEM
 
 STEM is one of the largest annual science and engineering project competitions in Pakistan, hosted by UET Science Society. Students from universities and colleges across the country gather to present innovative STEM-based projects, ranging from engineering prototypes to scientific experiments and technological gadgets. The event is judged by industry professionals, entrepreneurs, and academic experts who evaluate creativity, feasibility, and impact. Top projects receive recognition and cash prizes, while visitors explore an exhibition of cutting-edge ideas. STEM not only encourages practical application of classroom knowledge but also fosters collaboration among young innovators, making it a flagship event that bridges industry and academia.
@@ -92,7 +94,8 @@ More than just a collection of articles, it is a source of inspiration. It refle
 The magazine also serves as a collaborative platform, bringing together student societies and organizations from different universities. These collaborations expand the diversity of content and perspectives, making Scientia Spectrum a unique and inclusive publication in Pakistan’s academic and student-led scientific community.
 
 ## Collaborating Societies and Partners for Scientia Spectrum
-These societies are our collaborators in Scientia spectrum.
+These societies are our collaborators in Scientia spectrum 2025.
+
 - UET Tribune
 - ASME (American Society of Mechanical Engineers, UET Chapter)
 - ASHRAE (American Society of Heating, Refrigerating and Air-Conditioning Engineers, UET Chapter)
@@ -109,18 +112,24 @@ These societies are our collaborators in Scientia spectrum.
 - SOMAME (Society of Metallurgy and Materials Engineering)
 - X News UET (Campus Media Platform)
 Through these collaborations, Scientia Spectrum has become more than a magazine — it is a collective voice of students, researchers, and enthusiasts from multiple institutions, united by their passion for science and innovation.
-TAGS: collaborators, partners, Scientia Spectrum, magazine
 
 # Our Team members and Core Body of UET SCIENCE SOCIETY
 This is our current team members and core body of science society.
-Mirza Muhammad Ali Khan is the President of Science Society. Zainab Raza is the Vice President of Science Society. 
+Mirza Muhammad Ali Khan is the President of Science Society. 
+Zainab Raza is the Vice President of Science Society. 
 Core Body includes: 
-Iqra Tanveer is the General Secretary. Ahmad Hassan is the Finance Secretary. Sahiba Ikram is the Press Secretary. Ayesha Zafar is the Coordination Secretary of science society. Zaid Zulfiqar is the Research Secretary. Fareeha Iqbal is the Management Secretary. 
+Iqra Tanveer is the General Secretary. 
+Ahmad Hassan is the Finance Secretary. 
+Sahiba Ikram is the Press Secretary. 
+Ayesha Zafar is the Coordination Secretary of science society. 
+Zaid Zulfiqar is the Research Secretary. 
+Fareeha Iqbal is the Management Secretary. 
+
 The advisor for UET Science Society is Prof. Dr. Muhammad Shahid Rafique, who is the Chairperson of the Department of Physics and the Laser & Optronics Centre at UET. 
 The advisor for SS UET New Campus is Prof. Dr. Kashif Rehan, who is a Professor at the Department of Natural Sciences & Humanities, New Campus UET.
 There are other co-directors and general members of society.
 # Developer
-Usman Ali Ashraf is the Guy who developed vivi. you can contact him at instagram, (username: usmaaann_a)
+Vivi is developed by Usman Ali Ashraf. you can contact him at instagram, (username: usmaaann_a)
 # Contact Us 
 here are the contacts of science society.
 - Mail: uetsciencesociety@gmail.com
@@ -131,4 +140,7 @@ here are the contacts of science society.
 - facebook: https://www.facebook.com/uetss?mibextid=qi2Omg&rdid=WOHbIcbhvUTTf3Ai&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FcrWWuchiYnc4g8xn%2F%3Fmibextid%3Dqi2Omg#
 - X.com: https://x.com/UET_SS
 - Youtube: https://www.youtube.com/@uetsciencesociety
+
+
+
 
