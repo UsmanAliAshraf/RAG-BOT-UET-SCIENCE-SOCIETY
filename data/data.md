@@ -111,13 +111,14 @@ These societies are our collaborators in Scientia spectrum.
 Through these collaborations, Scientia Spectrum has become more than a magazine — it is a collective voice of students, researchers, and enthusiasts from multiple institutions, united by their passion for science and innovation.
 TAGS: collaborators, partners, Scientia Spectrum, magazine
 
-# Our Team
-this is our current team and core body.
-The advisor for UET Science Society is Prof. Dr. Muhammad Shahid Rafique, who is the Chairperson of the Department of Physics and the Laser & Optronics Centre at UET. The advisor for SS UET New Campus is Prof. Dr. Kashif Rehan, who is a Professor at the Department of Natural Sciences & Humanities, New Campus UET.
-
+# Our Team members and Core Body of UET SCIENCE SOCIETY
+This is our current team members and core body of science society.
 Mirza Muhammad Ali Khan is the President of Science Society. Zainab Raza is the Vice President of Science Society. 
-Core Body: 
-Iqra Tanveer is the General Secretary. Ahmad Hassan is the Finance Secretary. Sahiba Ikram is the Press Secretary. Ayesha Zafar is the Coordination Secretary of science society. Zaid Zulfiqar is the Research Secretary. Fareeha Iqbal is the Management Secretary. Iqra Tanveer is also listed as General Secretary. 
+Core Body includes: 
+Iqra Tanveer is the General Secretary. Ahmad Hassan is the Finance Secretary. Sahiba Ikram is the Press Secretary. Ayesha Zafar is the Coordination Secretary of science society. Zaid Zulfiqar is the Research Secretary. Fareeha Iqbal is the Management Secretary. 
+The advisor for UET Science Society is Prof. Dr. Muhammad Shahid Rafique, who is the Chairperson of the Department of Physics and the Laser & Optronics Centre at UET. 
+The advisor for SS UET New Campus is Prof. Dr. Kashif Rehan, who is a Professor at the Department of Natural Sciences & Humanities, New Campus UET.
+There are other co-directors and general members of society.
 # Developer
 Usman Ali Ashraf is the Guy who developed vivi. you can contact him at instagram, (username: usmaaann_a)
 # Contact Us 

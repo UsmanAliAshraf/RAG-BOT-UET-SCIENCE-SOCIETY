@@ -1,5 +1,5 @@
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 import re
 
 # 1. Load markdown data
@@ -11,8 +11,6 @@ with open("data\data.md", "r", encoding="utf-8") as f:
 pattern = r'(?:^|\n)(#+\s.*?)(?=\n#+|\Z)'
 sections = re.findall(pattern, data, flags=re.DOTALL | re.MULTILINE)
 
-# Optional: clean sections
-sections = [sec.strip() for sec in sections if len(sec.strip()) > 50]  # ignore tiny chunks
 
 # 3. Use free HuggingFace embeddings
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")

@@ -9,4 +9,8 @@ fastapi
 uvicorn
 sentence-transformers
 groq
-GroqChat
+fastapi
+uvicorn
+langchain_groq
+langchain_huggingface
+## uvicorn server.main:app --reload
