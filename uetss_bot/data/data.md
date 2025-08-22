@@ -112,11 +112,15 @@ Through these collaborations, Scientia Spectrum has become more than a magazine 
 TAGS: collaborators, partners, Scientia Spectrum, magazine
 
 # Our Team
-this is our current team.
+this is our current team and core body.
 The advisor for UET Science Society is Prof. Dr. Muhammad Shahid Rafique, who is the Chairperson of the Department of Physics and the Laser & Optronics Centre at UET. The advisor for SS UET New Campus is Prof. Dr. Kashif Rehan, who is a Professor at the Department of Natural Sciences & Humanities, New Campus UET.
 
-Mirza Muhammad Ali Khan is the President of Science Society. Zainab Raza is the Vice President of Science Society. Iqra Tanveer is the General Secretary. Ahmad Hassan is the Finance Secretary. Sahiba Ikram is the Press Secretary. Ayesha Zafar is the Coordination Secretary of science society. Zaid Zulfiqar is the Research Secretary. Fareeha Iqbal is the Management Secretary. Iqra Tanveer is also listed as General Secretary.
-# Contact Us
+Mirza Muhammad Ali Khan is the President of Science Society. Zainab Raza is the Vice President of Science Society. 
+Core Body: 
+Iqra Tanveer is the General Secretary. Ahmad Hassan is the Finance Secretary. Sahiba Ikram is the Press Secretary. Ayesha Zafar is the Coordination Secretary of science society. Zaid Zulfiqar is the Research Secretary. Fareeha Iqbal is the Management Secretary. Iqra Tanveer is also listed as General Secretary. 
+# Developer
+Usman Ali Ashraf is the Guy who developed vivi. you can contact him at instagram, (username: usmaaann_a)
+# Contact Us 
 here are the contacts of science society.
 - Mail: uetsciencesociety@gmail.com
 - Phone: +92 321 6180658
