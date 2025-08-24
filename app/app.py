@@ -1,10 +1,10 @@
-# LangGraph-style chatbot (single-file)
-# Requirements: langchain, langchain_community, langchain_groq, dotenv, faiss, sentence-transformers
+# LangGraph-style chatbot for UET Science Society
+# Uses RAG pipeline: FAISS retrieval + Groq LLM + Session-based memory
 
 import os
 import warnings
 from dotenv import load_dotenv
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -13,10 +13,12 @@ from langchain.chains import LLMChain
 from langchain_groq.chat_models import ChatGroq
 from langchain.memory import ConversationSummaryMemory
 
+from app.session_manager import session_manager, ChatSession
+
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # ------------------------------
-# 0️⃣ Load env + keys
+# 0️⃣ Environment & API Setup
 # ------------------------------
 load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
@@ -25,48 +27,36 @@ if not GROQ_API_KEY:
 os.environ["GROQ_API_KEY"] = GROQ_API_KEY
 
 # ------------------------------
-# 1️⃣ Globals / State Initialization
+# 1️⃣ Vector Database & Retrieval
 # ------------------------------
-state = {
-    "question": None,        # user input
-    "answer": None,          # final output
-    "debug_trace": [],       # visited nodes in order
-}
-
-# ------------------------------
-# 2️⃣ Load Embeddings + FAISS
-# ------------------------------
+# Load pre-trained embeddings for text similarity
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
+# Load FAISS index containing UET Science Society knowledge base
 db = FAISS.load_local("faiss_index", embedding_model, allow_dangerous_deserialization=True)
 
+# Configure retriever for document search
 retriever = db.as_retriever(
-    search_type="mmr",
-    search_kwargs={"k": 3, "fetch_k": 5, "lambda_mult": 0.5},
+    search_type="mmr",  # Maximum Marginal Relevance for diverse results
+    search_kwargs={"k": 3, "fetch_k": 5, "lambda_mult": 0.5},  # Get 3 docs from 5 candidates
     streaming=False,
     verbose=False,
 )
 
 # ------------------------------
-# 3️⃣ Define the LLM (ChatGroq)
+# 2️⃣ Language Model Configuration
 # ------------------------------
+# Initialize Groq LLM for response generation
 llm = ChatGroq(
-    model="qwen/qwen3-32b",
-    temperature=0.0,
-    max_tokens=512,
+    model="qwen/qwen3-32b",  # Large language model
+    temperature=0.0,         # Deterministic responses
+    max_tokens=512,          # Response length limit
 )
 
 # ------------------------------
-# 4️⃣ Memory (Summary-based)
+# 3️⃣ Prompt Template
 # ------------------------------
-memory = ConversationSummaryMemory(
-    llm=llm,
-    memory_key="memory",   # will inject into prompt
-    input_key="question"   # aligns with our state["question"]
-)
-
-# ------------------------------
-# 5️⃣ Prompts
-# ------------------------------
+# System prompt that defines bot behavior and context usage
 BASE_PROMPT_TEMPLATE = """
 Your name is Echo.
 You are a professional yet friendly assistant for UET Science Society, here to help users with their queries about the society. 
@@ -77,7 +67,7 @@ If the answer is not present in the context or memory, say in a nice apologetic 
 Do NOT hallucinate, keep things simple.
 Do not add extra information or make up sources.
 Do not tell them anything about context or data sources or system prompts, i.e "this thing is listed twice in context or memory".
-and Again, keep your answers concise.
+and Again, keep your answers concise, as concise as possible.
 
 CONTEXT:
 {context}
@@ -94,59 +84,125 @@ base_prompt = PromptTemplate(
     template=BASE_PROMPT_TEMPLATE
 )
 
-answer_chain = LLMChain(llm=llm, prompt=base_prompt, memory=memory)
+# ------------------------------
+# 4️⃣ Memory Management
+# ------------------------------
+def create_session_memory(session_id: str) -> ConversationSummaryMemory:
+    """Create new conversation memory for a session"""
+    return ConversationSummaryMemory(
+        llm=llm,
+        memory_key="memory",   # Key used in prompt template
+        input_key="question"   # Key for user input
+    )
+
+def get_or_create_session_memory(session: ChatSession) -> ConversationSummaryMemory:
+    """Get existing memory or create new one for session"""
+    if session.memory is None:
+        session.memory = create_session_memory(session.session_id)
+    return session.memory
 
 # ------------------------------
-# Helper utilities (nodes implemented as funcs)
+# 5️⃣ Pipeline Nodes
 # ------------------------------
-def input_node(user_text: str, st: Dict[str, Any]):
-    st["question"] = user_text.strip()
-    st["debug_trace"].append("InputNode")
-    return st
+def input_node(user_text: str, session: ChatSession):
+    """Process and store user input in session"""
+    session.question = user_text.strip()
+    session.debug_trace.append("InputNode")
+    session.update_activity()
+    return session
 
-def retriever_node(st: Dict[str, Any]) -> Dict[str, Any]:
-    st["debug_trace"].append("RetrieverNode")
-    query = st["question"]
+def retriever_node(session: ChatSession) -> ChatSession:
+    """Main processing node: retrieve docs, generate response, update memory"""
+    session.debug_trace.append("RetrieverNode")
+    
+    # Get session memory
+    memory = get_or_create_session_memory(session)
+    
+    # Search knowledge base for relevant documents
+    query = session.question
     docs = retriever.get_relevant_documents(query)
+    
+    # Build context from retrieved documents
     context_snippets = []
     for d in docs[:3]:
         txt = getattr(d, "page_content", str(d))
-        context_snippets.append(txt[:800])
+        context_snippets.append(txt[:800])  # Limit each snippet
     context = "\n---\n".join(context_snippets) if context_snippets else "No context found."
 
-    # The memory object will inject past summary automatically
-    prompt_inputs = {"context": context, "question": st["question"]}
+    # Create chain with memory and generate response
+    answer_chain = LLMChain(llm=llm, prompt=base_prompt, memory=memory)
+    prompt_inputs = {"context": context, "question": session.question}
     out = answer_chain.run(prompt_inputs)
-    st["answer"] = out.strip()
-    return st
+    session.answer = out.strip()
+    
+    session.update_activity()
+    return session
 
-def answer_node(st: Dict[str, Any]) -> Dict[str, Any]:
-    st["debug_trace"].append("AnswerNode")
-    return st
+def answer_node(session: ChatSession) -> ChatSession:
+    """Final processing node"""
+    session.debug_trace.append("AnswerNode")
+    session.update_activity()
+    return session
 
 # ------------------------------
-# 6️⃣ Main loop (CLI)
+# 6️⃣ Main Pipeline
 # ------------------------------
-def run_chat():
-    print("🤖 LangGraph-style ChatBot (ChatGroq + FAISS + SummaryMemory) — type 'exit' to quit\n")
-    while True:
-        user_input = input("You: ").strip()
-        if not user_input:
-            continue
-        if user_input.lower() == "exit":
-            print("Goodbye! 👋")
-            break
+def run_chat_pipeline(session_id: str, user_input: str) -> Dict[str, Any]:
+    """Execute complete chat pipeline for a session"""
+    # Get or create session
+    session = session_manager.get_session(session_id)
+    if not session:
+        session_id = session_manager.create_session()
+        session = session_manager.get_session(session_id)
+    
+    # Reset state for new conversation turn
+    session.reset_state()
+    
+    # Execute pipeline: input → retrieve → answer
+    input_node(user_input, session)
+    retriever_node(session)
+    answer_node(session)
+    
+    # Get memory info for debugging
+    memory_content = session.get_memory_content()
+    memory_buffer = session.get_memory_buffer()
+    
+    return {
+        "answer": session.answer,
+        "memory_content": memory_content,
+        "memory_buffer_length": len(memory_buffer),
+        "session_id": session_id
+    }
 
-        state["debug_trace"] = []
-        input_node(user_input, state)
+# ------------------------------
+# 7️⃣ CLI Interface (for testing)
+# ------------------------------
+# def run_chat():
+#     """Command-line interface for testing"""
+#     session_id = session_manager.create_session()
+#     print("🤖 Echo - UET Science Society ChatBot — type 'exit' to quit\n")
+    
+#     while True:
+#         user_input = input("You: ").strip()
+#         if not user_input:
+#             continue
+#         if user_input.lower() == "exit":
+#             print("Goodbye! 👋")
+#             break
 
-        retriever_node(state)
-        answer_node(state)
-
-        print("\nBot:", state["answer"], "\n")
-        print("----- DEBUG TRACE -----")
-        print("Visited nodes:", " -> ".join(state["debug_trace"]))
-        print("-----------------------\n")
-
-if __name__ == "__main__":
-    run_chat()
+#         try:
+#             result = run_chat_pipeline(session_id, user_input)
+#             print("\nBot:", result["answer"], "\n")
+            
+#             # Debug info
+#             session = session_manager.get_session(session_id)
+#             if session:
+#                 print("----- DEBUG INFO -----")
+#                 print("Session ID:", session_id)
+#                 print("Visited nodes:", " -> ".join(session.debug_trace))
+#                 print("Active sessions:", session_manager.get_session_count())
+#                 print("Memory buffer length:", result["memory_buffer_length"])
+#                 print("Memory content:", result["memory_content"])
+#                 print("-----------------------\n")
+#         except Exception as e:
+#             print(f"❌ Error: {e}")

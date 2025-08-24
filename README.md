@@ -105,8 +105,5 @@ All Rights of this chatbot belongs to UET Science Society - © 2025.
 ## 👥 Contributors
 
 * **Usman Ali Ashraf** – Lead Developer
-
-```
-
 ---
 

@@ -8,12 +8,29 @@ academic excellence along with extra-curricular activities.
 # ABOUT Science Society, UET Lahore
 UET Science Society, established in 2014 at the University of Engineering and Technology Lahore, is one of the most vibrant and dynamic student organizations on campus. It is a student-run society that plays a vital role in fostering scientific thinking, innovation, and research culture among students. With over 200 active members and ambassadors in more than 25 institutes nationwide, the society has grown into the largest science society in Pakistan. Its mission is to bridge the gap between classroom learning and real-world applications by introducing students to modern technologies, research opportunities, and hands-on scientific exploration.
 
-The society organizes a wide range of activities including expert talks, technical workshops, exhibitions, project competitions, outreach programs, and interactive experiments. These initiatives provide students with opportunities to gain practical exposure, sharpen their skills, and network with professionals from academia, industry, and scientific organizations. The UET Science Society regularly collaborates with more than 30 student bodies from various universities across Pakistan, creating a strong knowledge-sharing network and expanding its impact beyond UET’s campus.
+The society organizes a wide range of activities including expert talks, technical workshops, exhibitions, project competitions, outreach programs, and interactive experiments. These initiatives provide students with opportunities to gain practical exposure, sharpen their skills, and network with professionals from academia, industry, and scientific organizations. The UET Science Society regularly collaborates with more than 30 student bodies from various universities across Pakistan, creating a strong knowledge-sharing network and expanding its impact beyond UET's campus.
 
 Among its flagship events are STEM, SYNES, and PSI-Meet. STEM is one of the largest inter-institutional science and engineering competitions, featuring over 70 innovative projects evaluated by industry experts and academic professionals. SYNES (Symposium for Youth, Nation, Education, and Science) is a unique platform that connects youth with professionals from academia, industry, activism, and entrepreneurship, encouraging dialogue, mentorship, and collaboration. PSI-Meet focuses on engaging students in creative, hands-on activities such as science quizzes, model building, and themed art, making scientific learning more fun, collaborative, and accessible.
 
 Over the past decade, the UET Science Society has established itself as a leading force in promoting science and technology among Pakistani youth. It has received multiple recognitions for its contributions to research awareness and youth engagement, serving as an inspiration for other student-led initiatives. By cultivating a culture of curiosity, creativity, and collaboration, the society continues to inspire the next generation of scientists, engineers, and leaders while advancing the cause of scientific excellence in Pakistan and beyond.
 
+## Core Body of UET Science Society
+
+The core body of UET Science Society includes:
+
+**President**: Mirza Muhammad Ali Khan
+**Vice President**: Zainab Raza
+**General Secretary**: Iqra Tanveer
+**Finance Secretary**: Ahmad Hassan
+**Press Secretary**: Sahiba Ikram
+**Coordination Secretary**: Ayesha Zafar
+**Research Secretary**: Zaid Zulfiqar
+**Management Secretary**: Fareeha Iqbal
+
+### Advisors
+
+**Main Campus**: Prof. Dr. Muhammad Shahid Rafique (Chairperson, Department of Physics)
+**New Campus**: Prof. Dr. Kashif Rehan (Professor, Department of Natural Sciences)
 
 # EVENTS AT SCEINCE SOCIETY(SS)
 Science society has following eevnts held every year. STEM, SYNES , ANNUAL CELEBRATION, PROJECT BREATHE, MAGAZINE LAUNCH, OUTREACH PROGRAMS, PROJECT COMPETITIONS, PSI MEET, AND MANY MORE.
