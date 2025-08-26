@@ -1,4 +1,5 @@
 # ABOUT University of Engineering and Technoology Lahore
+
 University of Engineering and Technology(UET), Lahore, established in 1921 is one of the oldest and
 most prestigious educational institute in Pakistan. With a legacy spanning a century, this Institute
 has cultivated generation upon generation of leading Engineers, Scientists and Leaders. Throughout the years, the number of departments, along with the research centers has increased, providing diversity in fields of engineering and enhanced quality in exploration and analysis. With the
@@ -6,6 +7,7 @@ motto of “Read in the name of thy Lord Who creates”, this Institution nouris
 academic excellence along with extra-curricular activities.
 
 # ABOUT Science Society, UET Lahore
+
 UET Science Society, established in 2014 at the University of Engineering and Technology Lahore, is one of the most vibrant and dynamic student organizations on campus. It is a student-run society that plays a vital role in fostering scientific thinking, innovation, and research culture among students. With over 200 active members and ambassadors in more than 25 institutes nationwide, the society has grown into the largest science society in Pakistan. Its mission is to bridge the gap between classroom learning and real-world applications by introducing students to modern technologies, research opportunities, and hands-on scientific exploration.
 
 The society organizes a wide range of activities including expert talks, technical workshops, exhibitions, project competitions, outreach programs, and interactive experiments. These initiatives provide students with opportunities to gain practical exposure, sharpen their skills, and network with professionals from academia, industry, and scientific organizations. The UET Science Society regularly collaborates with more than 30 student bodies from various universities across Pakistan, creating a strong knowledge-sharing network and expanding its impact beyond UET's campus.
@@ -33,6 +35,7 @@ The core body of UET Science Society includes:
 **New Campus**: Prof. Dr. Kashif Rehan (Professor, Department of Natural Sciences)
 
 # EVENTS AT SCEINCE SOCIETY(SS)
+
 Science society has following eevnts held every year. STEM, SYNES , ANNUAL CELEBRATION, PROJECT BREATHE, MAGAZINE LAUNCH, OUTREACH PROGRAMS, PROJECT COMPETITIONS, PSI MEET, AND MANY MORE.
 here are the details for each one of them.
 
@@ -104,6 +107,7 @@ The Scavenger Hunt is an adventurous and intellectually stimulating activity tha
 To support students in preparing for opportunities abroad, the UET Science Society organizes free IELTS mock tests in collaboration with partners. This initiative allows participants to assess their English language proficiency, practice under exam-like conditions, and identify areas for improvement. By providing this academic support, the society ensures that students are better equipped for international education and career pathways.
 
 # Scientia Spectrum
+
 Scientia Spectrum is the official magazine of the UET Science Society, designed to capture the wonder, depth, and diversity of science. It is a panoramic publication that covers a wide range of scientific disciplines, offering thought-provoking articles, research highlights, interviews, and creative features. The magazine caters not only to students and researchers but also to anyone with a curiosity for science.
 
 More than just a collection of articles, it is a source of inspiration. It reflects the beauty of science in our daily lives and highlights the role of innovation, creativity, and research in shaping the future. Each edition features content that bridges theory with practice, encouraging readers to explore science beyond the classroom and engage with real-world applications.
@@ -111,6 +115,7 @@ More than just a collection of articles, it is a source of inspiration. It refle
 The magazine also serves as a collaborative platform, bringing together student societies and organizations from different universities. These collaborations expand the diversity of content and perspectives, making Scientia Spectrum a unique and inclusive publication in Pakistan’s academic and student-led scientific community.
 
 ## Collaborating Societies and Partners for Scientia Spectrum
+
 These societies are our collaborators in Scientia spectrum 2025.
 
 - UET Tribune
@@ -128,36 +133,38 @@ These societies are our collaborators in Scientia spectrum 2025.
 - IEEE UET Student Branch
 - SOMAME (Society of Metallurgy and Materials Engineering)
 - X News UET (Campus Media Platform)
-Through these collaborations, Scientia Spectrum has become more than a magazine — it is a collective voice of students, researchers, and enthusiasts from multiple institutions, united by their passion for science and innovation.
+  Through these collaborations, Scientia Spectrum has become more than a magazine — it is a collective voice of students, researchers, and enthusiasts from multiple institutions, united by their passion for science and innovation.
 
 # Our Team members and Core Body of UET SCIENCE SOCIETY
-This is our current team members and core body of science society.
-Mirza Muhammad Ali Khan is the President of Science Society. 
-Zainab Raza is the Vice President of Science Society. 
-Core Body includes: 
-Iqra Tanveer is the General Secretary. 
-Ahmad Hassan is the Finance Secretary. 
-Sahiba Ikram is the Press Secretary. 
-Ayesha Zafar is the Coordination Secretary of science society. 
-Zaid Zulfiqar is the Research Secretary. 
-Fareeha Iqbal is the Management Secretary. 
 
-The advisor for UET Science Society is Prof. Dr. Muhammad Shahid Rafique, who is the Chairperson of the Department of Physics and the Laser & Optronics Centre at UET. 
+This is our current team members and core body of science society.
+Mirza Muhammad Ali Khan is the President of Science Society.
+Zainab Raza is the Vice President of Science Society.
+Core Body includes:
+Iqra Tanveer is the General Secretary.
+Ahmad Hassan is the Finance Secretary.
+Sahiba Ikram is the Press Secretary.
+Ayesha Zafar is the Coordination Secretary of science society.
+Zaid Zulfiqar is the Research Secretary.
+Fareeha Iqbal is the Management Secretary.
+
+The advisor for UET Science Society is Prof. Dr. Muhammad Shahid Rafique, who is the Chairperson of the Department of Physics and the Laser & Optronics Centre at UET.
 The advisor for SS UET New Campus is Prof. Dr. Kashif Rehan, who is a Professor at the Department of Natural Sciences & Humanities, New Campus UET.
 There are other co-directors and general members of society.
+
 # Developer
-Vivi is developed by Usman Ali Ashraf. you can contact him at instagram, (username: usmaaann_a)
-# Contact Us 
+
+Echo is developed by Usman Ali Ashraf. you can contact him at instagram, (username: usmaaann_a)
+
+# Contact Us
+
 here are the contacts of science society.
+
 - Mail: uetsciencesociety@gmail.com
 - Phone: +92 321 6180658
-- Location: Laser and Optonics center, UET Lahore     
+- Location: Laser and Optonics center, UET Lahore
 - instagram: https://www.instagram.com/uetsciencesociety
 - linkedin: https://www.linkedin.com/company/uet-science-society-official/
 - facebook: https://www.facebook.com/uetss?mibextid=qi2Omg&rdid=WOHbIcbhvUTTf3Ai&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FcrWWuchiYnc4g8xn%2F%3Fmibextid%3Dqi2Omg#
 - X.com: https://x.com/UET_SS
 - Youtube: https://www.youtube.com/@uetsciencesociety
-
-
-
-

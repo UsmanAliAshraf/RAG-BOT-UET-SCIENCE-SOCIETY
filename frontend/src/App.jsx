@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import "./App.css";
 
 const App = () => {
@@ -85,8 +86,11 @@ const App = () => {
       // Remove typing indicator
       setMessages((prev) => prev.filter(msg => msg.id !== typingId));
       
+      // Clean the answer one more time as a safety measure
+      const cleanAnswer = cleanMemoryContent(data.answer);
+      
       // Start typing effect
-      await typeWriterEffect(data.answer, memoryInfo);
+      await typeWriterEffect(cleanAnswer, memoryInfo);
     } catch (err) {
       console.error("Error:", err);
       // Remove typing indicator and add error message
@@ -111,8 +115,29 @@ const App = () => {
 
   const cleanMemoryContent = (content) => {
     if (!content) return "No memory yet";
-    // Remove think tags from memory content
-    return content.replace(/<think>.*?<\/think>/gs, '').trim();
+    
+    // Comprehensive cleaning function to remove all think tag variations
+    let cleaned = content;
+    
+    // Remove <think>...</think> blocks (case insensitive, multiline)
+    cleaned = cleaned.replace(/<think>.*?<\/think>/gis, '');
+    
+    // Remove <thinking>...</thinking> blocks
+    cleaned = cleaned.replace(/<thinking>.*?<\/thinking>/gis, '');
+    
+    // Remove [think]...[/think] blocks
+    cleaned = cleaned.replace(/\[think\].*?\[\/think\]/gis, '');
+    
+    // Remove any remaining think-related patterns
+    cleaned = cleaned.replace(/<think.*?>.*?<\/think>/gis, '');
+    
+    // Remove any lines that start with "think:" or "thinking:"
+    cleaned = cleaned.replace(/^(think|thinking):.*$/gim, '');
+    
+    // Clean up extra whitespace and empty lines
+    cleaned = cleaned.replace(/\n\s*\n/g, '\n').trim();
+    
+    return cleaned || "No memory yet";
   };
 
   const toggleMemory = () => {
@@ -122,7 +147,7 @@ const App = () => {
   return (
     <div className="chat-container">
       <div className="chat-header">
-        <h1>🌌 Echo - UET Science Society</h1>
+        <h1> Echo - UET Science Society</h1>
         <div className="header-buttons">
           <button onClick={toggleMemory} className="memory-btn">
             {showMemory ? "🔒 Hide Memory" : "🧠 Show Memory"}
@@ -137,7 +162,7 @@ const App = () => {
         {messages.length === 0 && (
           <div className="welcome-message">
             <p>👋 Ask me anything.</p>
-            <p>About the  Sciemce Society, events, or activities!</p>
+            <p>About the  Science Society their events, or activities!</p>
           </div>
         )}
         
@@ -151,7 +176,28 @@ const App = () => {
               </div>
             ) : (
               <div className={`chat-message ${msg.sender === "user" ? "user" : "bot"}`}>
-                {msg.text}
+                {msg.sender === "bot" ? (
+                  <ReactMarkdown 
+                    components={{
+                      // Custom styling for markdown elements
+                      h1: ({children}) => <h1 style={{fontSize: '1.2rem', margin: '8px 0', color: 'inherit'}}>{children}</h1>,
+                      h2: ({children}) => <h2 style={{fontSize: '1.1rem', margin: '6px 0', color: 'inherit'}}>{children}</h2>,
+                      h3: ({children}) => <h3 style={{fontSize: '1rem', margin: '4px 0', color: 'inherit'}}>{children}</h3>,
+                      p: ({children}) => <p style={{margin: '4px 0', lineHeight: '1.5'}}>{children}</p>,
+                      ul: ({children}) => <ul style={{margin: '8px 0', paddingLeft: '20px'}}>{children}</ul>,
+                      ol: ({children}) => <ol style={{margin: '8px 0', paddingLeft: '20px'}}>{children}</ol>,
+                      li: ({children}) => <li style={{margin: '2px 0', lineHeight: '1.4'}}>{children}</li>,
+                      strong: ({children}) => <strong style={{fontWeight: '600', color: '#a855f7'}}>{children}</strong>,
+                      em: ({children}) => <em style={{fontStyle: 'italic', color: '#d8b4fe'}}>{children}</em>,
+                      code: ({children}) => <code style={{backgroundColor: 'rgba(168, 85, 247, 0.2)', padding: '2px 4px', borderRadius: '4px', fontSize: '0.9em'}}>{children}</code>,
+                      a: ({href, children}) => <a href={href} target="_blank" rel="noopener noreferrer" style={{color: '#a855f7', textDecoration: 'underline'}}>{children}</a>,
+                    }}
+                  >
+                    {msg.text}
+                  </ReactMarkdown>
+                ) : (
+                  msg.text
+                )}
               </div>
             )}
             
@@ -161,7 +207,16 @@ const App = () => {
                   🧠 Memory (Buffer: {msg.memoryInfo.bufferLength} messages)
                 </div>
                 <div className="memory-content">
-                  {cleanMemoryContent(msg.memoryInfo.content)}
+                  <ReactMarkdown 
+                    components={{
+                      p: ({children}) => <p style={{margin: '2px 0', fontSize: '0.85em', lineHeight: '1.3'}}>{children}</p>,
+                      ul: ({children}) => <ul style={{margin: '4px 0', paddingLeft: '15px', fontSize: '0.85em'}}>{children}</ul>,
+                      li: ({children}) => <li style={{margin: '1px 0', fontSize: '0.85em'}}>{children}</li>,
+                      strong: ({children}) => <strong style={{fontWeight: '600', color: '#a855f7', fontSize: '0.85em'}}>{children}</strong>,
+                    }}
+                  >
+                    {cleanMemoryContent(msg.memoryInfo.content)}
+                  </ReactMarkdown>
                 </div>
               </div>
             )}
